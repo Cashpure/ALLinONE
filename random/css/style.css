@@ -1,0 +1,296 @@
+body {
+   background-color: black;
+   overflow: hidden;
+}
+
+body {
+   cursor: none;
+   font-family: "Alata", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+}
+
+.wrapper {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+}
+
+.btn {
+   background-color: white;
+   width: 0;
+   height: 0;
+   border-radius: 50%;
+   border: solid 10px white;
+   transition: all .3s;
+   box-shadow: 0 0 10px 10px white;
+   cursor: none;
+}
+
+
+.btn:hover {
+   box-shadow: none;
+   width: 380px;
+   height: 380px;
+}
+
+.circle {
+   background-color: white;
+   border-radius: 50%;
+   position: absolute;
+   display: none;
+   transition: all .9s;
+}
+
+.circle--active {
+   scale: 2.1;
+}
+
+.circle-1 {
+   width: 20px;
+   height: 20px;
+   top: 45px;
+   left: 80px;
+}
+
+.circle-2 {
+   width: 45px;
+   height: 45px;
+   top: 400px;
+   left: 89px;
+}
+
+.circle-3 {
+   width: 150px;
+   height: 150px;
+   top: 200px;
+   left: 260px;
+}
+
+.circle-4 {
+   width: 100px;
+   height: 100px;
+   top: 100px;
+   left: 460px;
+}
+
+.circle-5 {
+   width: 80px;
+   height: 80px;
+   top: 400px;
+   left: 390px;
+}
+
+.circle-6 {
+   width: 20px;
+   height: 20px;
+   top: 400px;
+   left: 600px;
+}
+
+.circle-7 {
+   width: 20px;
+   height: 20px;
+   top: 290px;
+   right: 460px;
+}
+
+.circle-8 {
+   width: 45px;
+   height: 45px;
+   top: 400px;
+   right: 89px;
+}
+
+.circle-9 {
+   width: 150px;
+   height: 150px;
+   top: 45px;
+   right: 80px;
+}
+
+.circle-10 {
+   width: 100px;
+   height: 100px;
+   top: 100px;
+   right: 460px;
+}
+
+.circle-11 {
+   width: 80px;
+   height: 80px;
+   top: 500px;
+   right: 460px;
+}
+
+.circle-12 {
+   width: 20px;
+   height: 20px;
+   bottom: 45px;
+   left: 80px;
+}
+
+.circle-13 {
+   width: 45px;
+   height: 45px;
+   bottom: 300px;
+   left: 189px;
+}
+
+.circle-14 {
+   width: 150px;
+   height: 150px;
+   bottom: 200px;
+   left: 260px;
+}
+
+.circle-15 {
+   width: 100px;
+   height: 100px;
+   bottom: 100px;
+   left: 460px;
+}
+
+.circle-16 {
+   width: 80px;
+   height: 80px;
+   bottom: 200px;
+   left: 590px;
+}
+
+.circle-17 {
+   width: 20px;
+   height: 20px;
+   bottom: 45px;
+   right: 160px;
+}
+
+.circle-18 {
+   width: 45px;
+   height: 45px;
+   bottom: 200px;
+   right: 189px;
+}
+
+.circle-19 {
+   width: 150px;
+   height: 150px;
+   bottom: 200px;
+   right: 260px;
+}
+
+.circle-20 {
+   width: 100px;
+   height: 100px;
+   bottom: 100px;
+   right: 460px;
+}
+
+.circle-21 {
+   width: 20px;
+   height: 20px;
+   top: 80px;
+   left: 1090px;
+}
+
+.circle-22 {
+   width: 20px;
+   height: 20px;
+   bottom: 100px;
+   left: 1000px;
+}
+
+.circle-23 {
+   width: 20px;
+   height: 20px;
+   bottom: 200px;
+   left: 890px;
+}
+
+#text {
+   color: black;
+   font-size: 40px;
+   display: none;
+   z-index: 100;
+}
+
+.text--active {
+   display: block !important;
+}
+
+#cursor {
+   --size: 50px;
+   position: absolute;
+   z-index: -1;
+   top: 0;
+   left: 0;
+   height: var(--size);
+   width: var(--size);
+   background-color: #fff;
+   border-radius: 50%;
+   transform: translate3d(calc(100vw * var(--cursor-x) - var(--size) / 2),
+         calc(100vh * var(--cursor-y) - var(--size) / 2),
+         0);
+   pointer-events: none;
+}
+.cursor--menu {
+   transform: translate3d(calc(100vw * var(--cursor-x) - var(--size) / 3),
+   calc(100vh * var(--cursor-y) - var(--size) / 3),
+   0) !important;
+   background-color: black !important;
+   height: 25px !important;
+   width: 25px !important;
+   z-index: 1 !important;
+}
+
+.menu {
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 50px;
+   height: 50px;
+   background-color: #fff;
+   border-radius: 0 0 0 100%;
+   transition: all .3s;
+}
+.menu--active {
+   width: 350px;
+   height: 350px;
+}
+.menu-list {
+   display: none;
+   flex-direction: column;
+   /* justify-content: right; */
+   align-items: flex-end;
+   font-size: 20px;
+}
+.menu-list--active {
+   display: flex;
+}
+.menu-item {
+   margin-bottom: 115px;
+   margin-left: 15px;
+   display: inline-block;
+   transition: all .3s;
+}
+.menu-item:hover {
+   letter-spacing: 4px;
+}
+.menu-item:first-child {
+   margin-top: 15px;
+   margin-right: auto;
+}
+.menu-item:nth-child(1n+2) {
+   margin-right: auto;
+   margin-left: 65px;
+}
+.menu-item:last-child {
+   margin-left: 190px;
+}
+.menu-link {
+   padding: 15px;
+   cursor: none;
+}
