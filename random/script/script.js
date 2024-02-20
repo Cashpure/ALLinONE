@@ -59,6 +59,7 @@ $(function () {
    })
 
    $('.btn').hover(function () {
+      $(this).toggleClass('btn--active')
       $('#text').fadeToggle('fast')
    })
 
@@ -67,10 +68,14 @@ $(function () {
       $('#cursor').toggleClass('cursor--menu')
       $('.menu-list').toggleClass('menu-list--active')
    })
-   
-   $('.menu-item').on('click', function (e) {
-      e.preventDefault()
+
+   $('#back').hover(function () {
+      $('#cursor').toggleClass('cursor--back')
    })
+
+   // $('.menu-item').on('click', function (e) {
+   //    e.preventDefault()
+   // })
 })
 
 
@@ -128,4 +133,69 @@ class Cursor {
 }
 
 new Cursor();
+
+
+
+
+
+
+
+
+let upBtn1 = document.getElementById('up-1')
+let upBtn2 = document.getElementById('up-2')
+let upBtn3 = document.getElementById('up-3')
+let backBtn = document.getElementById('back')
+
+const pages = [
+   {
+      name: "mainPage",
+      "button text": ["Upgrade", "Upgrade", "Upgrade",],
+      "button functions": [goUp, ],
+   },
+   {
+      name: "secondPage",
+      "button text": ["Cursor", "Circle", "Auto"],
+      "button functions": [, goBack],
+   }
+]
+
+upBtn1.onclick = goUp
+upBtn2.onclick = goUp
+upBtn3.onclick = goUp
+// backBtn.onclick = goBack
+
+function update(page) {
+   upBtn1.innerText = page["button text"][0];
+   upBtn2.innerText = page["button text"][1];
+   upBtn3.innerText = page["button text"][2];
+   upBtn1.onclick = page["button functions"][0];
+   upBtn2.onclick = page["button functions"][0];
+   upBtn3.onclick = page["button functions"][0];
+   backBtn.onclick = page["button functions"][1];
+}
+
+
+
+function goUp() {
+   update(pages[1])
+   backBtn.style.display = 'block'
+}
+
+function goBack() {
+   update(pages[0])
+   backBtn.style.display = 'none'
+}
+
+// let menu = document.getElementById('menu')
+
+// menu.addEventListener('mouseout', function () {
+//    update(pages[0])
+//    backBtn.style.display = 'none'
+// })
+
+// if (!menu.classList.contains('menu--active')) {
+//    update(pages[0])
+// }
+
+
 

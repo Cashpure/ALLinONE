@@ -31,7 +31,7 @@ body {
 }
 
 
-.btn:hover {
+.btn--active {
    box-shadow: none;
    width: 380px;
    height: 380px;
@@ -245,6 +245,9 @@ body {
    width: 25px !important;
    z-index: 1 !important;
 }
+.cursor--back {
+   background-color: #fff !important;
+}
 
 .menu {
    position: absolute;
@@ -292,5 +295,16 @@ body {
 }
 .menu-link {
    padding: 15px;
+   cursor: none;
+}
+#back {
+   display: none;
+   position: fixed;
+   top: 5px;
+   right: 5px;
+   width: 45px;
+   height: 45px;
+   background-color: black;
+   border-radius: 50%;
    cursor: none;
 }
