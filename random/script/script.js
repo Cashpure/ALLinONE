@@ -186,16 +186,25 @@ function goBack() {
    backBtn.style.display = 'none'
 }
 
-// let menu = document.getElementById('menu')
+let menu = document.getElementById('menu')
 
 // menu.addEventListener('mouseout', function () {
 //    update(pages[0])
 //    backBtn.style.display = 'none'
 // })
 
-// if (!menu.classList.contains('menu--active')) {
-//    update(pages[0])
-// }
-
-
-
+setInterval(() => {
+   
+   if (!menu.classList.contains('menu--active')) {
+      update(pages[0])
+      backBtn.style.display = 'none'
+      console.log(backBtn.value)
+   }
+}, 0);
+   
+   
+   
+   // do {
+   //    update(pages[0])
+   //    console.log(backBtn.value) 
+   // } while (menu.classList.contains('menu--active'));

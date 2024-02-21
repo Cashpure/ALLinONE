@@ -308,3 +308,6 @@ body {
    border-radius: 50%;
    cursor: none;
 }
+.back--closed {
+   display: none !important;
+}
