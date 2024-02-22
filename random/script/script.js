@@ -72,10 +72,6 @@ $(function () {
    $('#back').hover(function () {
       $('#cursor').toggleClass('cursor--back')
    })
-
-   // $('.menu-item').on('click', function (e) {
-   //    e.preventDefault()
-   // })
 })
 
 
@@ -145,6 +141,11 @@ let upBtn1 = document.getElementById('up-1')
 let upBtn2 = document.getElementById('up-2')
 let upBtn3 = document.getElementById('up-3')
 let backBtn = document.getElementById('back')
+let value1 = document.getElementById('value-1')
+let value2 = document.getElementById('value-2')
+let value3 = document.getElementById('value-3')
+let value = document.getElementsByClassName('value')
+
 
 const pages = [
    {
@@ -162,7 +163,7 @@ const pages = [
 upBtn1.onclick = goUp
 upBtn2.onclick = goUp
 upBtn3.onclick = goUp
-// backBtn.onclick = goBack
+
 
 function update(page) {
    upBtn1.innerText = page["button text"][0];
@@ -179,32 +180,33 @@ function update(page) {
 function goUp() {
    update(pages[1])
    backBtn.style.display = 'block'
+   value1.style.display = 'inline'
+   value2.style.display = 'inline'
+   value3.style.display = 'inline'
 }
 
 function goBack() {
    update(pages[0])
    backBtn.style.display = 'none'
+   value1.style.display = 'none'
+   value2.style.display = 'none'
+   value3.style.display = 'none'
 }
 
 let menu = document.getElementById('menu')
 
-// menu.addEventListener('mouseout', function () {
-//    update(pages[0])
-//    backBtn.style.display = 'none'
-// })
+
 
 setInterval(() => {
-   
    if (!menu.classList.contains('menu--active')) {
       update(pages[0])
       backBtn.style.display = 'none'
-      console.log(backBtn.value)
+      value1.style.display = 'none'
+      value2.style.display = 'none'
+      value3.style.display = 'none'
    }
 }, 0);
    
    
    
-   // do {
-   //    update(pages[0])
-   //    console.log(backBtn.value) 
-   // } while (menu.classList.contains('menu--active'));
+
