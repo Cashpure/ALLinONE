@@ -1,45 +1,63 @@
-let c1 = document.getElementsByClassName('circle-1')
-let c2 = document.getElementsByClassName('circle-2')
-let c3 = document.getElementsByClassName('circle-3')
-let c4 = document.getElementsByClassName('circle-4')
-let c5 = document.getElementsByClassName('circle-5')
-let c6 = document.getElementsByClassName('circle-6')
-let c7 = document.getElementsByClassName('circle-7')
-let c8 = document.getElementsByClassName('circle-8')
-let c9 = document.getElementsByClassName('circle-9')
-let c10 = document.getElementsByClassName('circle-10')
-let c11 = document.getElementsByClassName('circle-11')
-let c12 = document.getElementsByClassName('circle-12')
-let c13 = document.getElementsByClassName('circle-13')
-let c14 = document.getElementsByClassName('circle-14')
-let c15 = document.getElementsByClassName('circle-15')
-let c16 = document.getElementsByClassName('circle-16')
-let c17 = document.getElementsByClassName('circle-17')
-let c18 = document.getElementsByClassName('circle-18')
-let c19 = document.getElementsByClassName('circle-19')
-let c20 = document.getElementsByClassName('circle-20')
-let c21 = document.getElementsByClassName('circle-21')
-let c22 = document.getElementsByClassName('circle-22')
-let c23 = document.getElementsByClassName('circle-23')
+let c1 = document.getElementById('circle-1')
+let c2 = document.getElementById('circle-2')
+let c3 = document.getElementById('circle-3')
+let c4 = document.getElementById('circle-4')
+let c5 = document.getElementById('circle-5')
+let c6 = document.getElementById('circle-6')
+let c7 = document.getElementById('circle-7')
+let c8 = document.getElementById('circle-8')
+let c9 = document.getElementById('circle-9')
+let c10 = document.getElementById('circle-10')
+let c11 = document.getElementById('circle-11')
+let c12 = document.getElementById('circle-12')
+let c13 = document.getElementById('circle-13')
+let c14 = document.getElementById('circle-14')
+let c15 = document.getElementById('circle-15')
+let c16 = document.getElementById('circle-16')
+let c17 = document.getElementById('circle-17')
+let c18 = document.getElementById('circle-18')
+let c19 = document.getElementById('circle-19')
+let c20 = document.getElementById('circle-20')
+let c21 = document.getElementById('circle-21')
+let c22 = document.getElementById('circle-22')
+let c23 = document.getElementById('circle-23')
+let allCircles = document.querySelectorAll('circle')
+let body = document.getElementsByTagName('body')
+let menu = document.getElementById('menu')
+let crsr = document.getElementById('cursor')
 
 const circles = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23]
 
 let button = document.getElementsByClassName('btn')
 let txt = document.getElementById('text')
 
-// txt.innerText = '11'
 
 let btn = document.getElementById('btn')
 
+const abbreviateNumber = (value) => {
+   const SI_SYMBOL = ["", "K", "M", "G", "T", "P", "E"];
+   const tier = Math.floor(Math.log10(Math.abs(value)) / 3);
+   if (tier === 0) return value.toString();
+   const suffix = SI_SYMBOL[tier];
+   const scale = Math.pow(10, tier * 3);
+   const scaled = value / scale;
+   return scaled.toFixed(1) + suffix;
+}
+
+let k = 0;
 function func() {
-   let k = 1;
    return function count() {
       return k++
    }
 }
 let res = func()
 btn.onclick = () => {
-   txt.innerText = res()
+   res.value += 1
+   txt.innerText = res.value
+}
+
+function plus() {
+
 }
 
 
@@ -65,12 +83,26 @@ $(function () {
 
    $('.menu').hover(function () {
       $(this).toggleClass('menu--active')
-      $('#cursor').toggleClass('cursor--menu')
+      if (($('#cursor').hasClass('cursor--switched')) == false) {
+         $('#cursor').toggleClass('cursor--menu')
+      }
+      if ($('#cursor').hasClass('cursor--switched')) {
+         $('#cursor').toggleClass('cursor--menu__switched')
+      }
       $('.menu-list').toggleClass('menu-list--active')
+      if ($('#up-3').hasClass('up-3__updated')) {
+         $('#up-3').removeClass('up-3__updated')
+         $('.menu-circle').removeClass('menu-circle__updated')
+      }
    })
 
    $('#back').hover(function () {
-      $('#cursor').toggleClass('cursor--back')
+      if (($('#cursor').hasClass('cursor--switched')) == false) {
+         $('#cursor').toggleClass('cursor--back')
+      }
+      if ($('#cursor').hasClass('cursor--switched')) {
+         $('#cursor').toggleClass('cursor--back__switched')
+      }
    })
 })
 
@@ -145,34 +177,38 @@ let value1 = document.getElementById('value-1')
 let value2 = document.getElementById('value-2')
 let value3 = document.getElementById('value-3')
 let value = document.getElementsByClassName('value')
+let menuCircle = document.getElementById('menu-circle')
 
+// value1.innerText = abbreviateNumber(value1.innerText)
+// value2.innerText = abbreviateNumber(value2.innerText)
+// value3.innerText = abbreviateNumber(value3.innerText)
 
 const pages = [
    {
       name: "mainPage",
-      "button text": ["Upgrade", "Upgrade", "Upgrade",],
-      "button functions": [goUp, ],
+      "button text": ["Upgrade", "", "Switch",],
+      "button functions": [goUp, color, switchTheme],
    },
    {
       name: "secondPage",
       "button text": ["Cursor", "Circle", "Auto"],
-      "button functions": [, goBack],
+      "button functions": [gradeCursor, gradeCirle, gradeAuto, goBack],
    }
 ]
 
-upBtn1.onclick = goUp
-upBtn2.onclick = goUp
-upBtn3.onclick = goUp
+// upBtn1.onclick = goUp
+// upBtn2.onclick = goUp
+// upBtn3.onclick = goUp
 
 
 function update(page) {
    upBtn1.innerText = page["button text"][0];
    upBtn2.innerText = page["button text"][1];
-   upBtn3.innerText = page["button text"][2];
+   // upBtn3.innerText = page["button text"][2];
    upBtn1.onclick = page["button functions"][0];
-   upBtn2.onclick = page["button functions"][0];
-   upBtn3.onclick = page["button functions"][0];
-   backBtn.onclick = page["button functions"][1];
+   upBtn2.onclick = page["button functions"][1];
+   upBtn3.onclick = page["button functions"][2];
+   backBtn.onclick = page["button functions"][3];
 }
 
 
@@ -183,6 +219,8 @@ function goUp() {
    value1.style.display = 'inline'
    value2.style.display = 'inline'
    value3.style.display = 'inline'
+   menuCircle.classList.add('menu-circle__updated')
+   upBtn3.classList.add('up-3__updated')
 }
 
 function goBack() {
@@ -191,13 +229,34 @@ function goBack() {
    value1.style.display = 'none'
    value2.style.display = 'none'
    value3.style.display = 'none'
+   menuCircle.classList.remove('menu-circle__updated')
+   upBtn3.classList.remove('up-3__updated')
 }
 
-let menu = document.getElementById('menu')
+function color() {
+
+}
+
+function switchTheme() {
+   btn.classList.toggle('btn--switched')
+   circles.forEach((el) => {
+      el.classList.toggle("circle--switched")
+   })
+   body[0].classList.toggle('body--switched')
+   menu.classList.toggle('menu--switched')
+   backBtn.classList.toggle('back--switched')
+   crsr.classList.toggle('cursor--switched')
+   crsr.classList.toggle('cursor--menu')
+   crsr.classList.toggle('cursor--menu__switched')
+   upBtn3.classList.toggle('up-3__switched')
+   menuCircle.classList.toggle('menu-circle__switched')
+}
 
 
 
-setInterval(() => {
+
+function upd() {
+
    if (!menu.classList.contains('menu--active')) {
       update(pages[0])
       backBtn.style.display = 'none'
@@ -205,8 +264,68 @@ setInterval(() => {
       value2.style.display = 'none'
       value3.style.display = 'none'
    }
-}, 0);
-   
-   
-   
+}
+setInterval(upd, 0);
 
+
+let c = 30
+let m = 1
+res.value = res()
+function gradeCursor() {
+   if (txt.innerText >= c) {
+      txt.innerText -= c
+      res.value -= c
+      c *= 3
+      m += 1
+      value1.innerText *= 3
+      btn.onclick = () => {
+         res.value += m
+         k += m
+         txt.innerText = res.value
+      }
+   }
+}
+
+
+let b = 400
+let aa = 1
+function gradeCirle() {
+   if (txt.innerText >= b) {
+      txt.innerText -= b
+      res.value -= b
+      aa *= 2
+      b *= aa
+      m *= 2
+      value2.innerText *= aa
+   }
+}
+
+// let f = 7000
+// let aa = 1
+// function gradeAuto() {
+//    if (txt.innerText >= f) {
+//       txt.innerText-=f
+//       res.value-=f
+//       aa*=2
+//       f*=aa
+//       m*=2
+//       value3.innerText*=aa
+//    }
+// }
+
+
+let f = 7000
+let ab = 8
+function gradeAuto() {
+   if (txt.innerText >= f) {
+      txt.innerText -= f
+      res.value -= f
+      f *= 4
+      value3.innerText *= 4
+      setInterval(() => {
+         res.value += ab
+         txt.innerText = res.value
+      }, 1000);
+      ab += 4
+   }
+}

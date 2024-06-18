@@ -1,6 +1,12 @@
 body {
    background-color: black;
    overflow: hidden;
+   transition: all .3s;
+}
+
+.body--switched {
+   background-color: #fff;
+   color: #fff;
 }
 
 body {
@@ -37,6 +43,12 @@ body {
    height: 380px;
 }
 
+.btn--switched {
+   background-color: #fff;
+   border-color: black;
+   box-shadow:0 0 20px 0 black;
+}
+
 .circle {
    background-color: white;
    border-radius: 50%;
@@ -47,6 +59,10 @@ body {
 
 .circle--active {
    scale: 2.1;
+}
+
+.circle--switched {
+   background-color: black;
 }
 
 .circle-1 {
@@ -211,7 +227,6 @@ body {
 }
 
 #text {
-   color: black;
    font-size: 40px;
    display: none;
    z-index: 100;
@@ -245,10 +260,24 @@ body {
    width: 25px !important;
    z-index: 1 !important;
 }
+.cursor--switched {
+   background-color: black !important;
+}
+.cursor--menu__switched {
+   transform: translate3d(calc(100vw * var(--cursor-x) - var(--size) / 3),
+   calc(100vh * var(--cursor-y) - var(--size) / 3),
+   0) !important;
+   background-color: #fff !important;
+   height: 25px !important;
+   width: 25px !important;
+   z-index: 1 !important;
+}
 .cursor--back {
    background-color: #fff !important;
 }
-
+.cursor--back__switched {
+   background-color: black !important;
+}
 .menu {
    position: absolute;
    top: 0;
@@ -262,6 +291,9 @@ body {
 .menu--active {
    width: 350px;
    height: 350px;
+}
+.menu--switched {
+   background-color: black;
 }
 .menu-list {
    display: none;
@@ -298,7 +330,8 @@ body {
    cursor: none;
 }
 .menu-item:last-child .menu-link {
-   width: 95px;
+   width: 75px;
+   padding-right: 0;
 }
 .menu-link:hover {
    letter-spacing: 3px;
@@ -314,6 +347,9 @@ body {
    border-radius: 50%;
    cursor: none;
 }
+.back--switched {
+   background-color: #fff !important;
+}
 .back--closed {
    display: none !important;
 }
@@ -321,4 +357,41 @@ body {
 #value-2, 
 #value-3 {
    display: none;
+}
+
+#up-3 {
+   border: solid 4px black;
+   font-size: 0;
+   border-radius: 20px;
+   width: 70px;
+   height: 30px;
+   padding: 0;
+   margin-top: 6px;
+   /* transition: all .3s; */
+}
+.up-3__switched {
+   border: solid 4px #fff !important;
+   /* transition: all .3s; */
+}
+.up-3__updated {
+   border: none !important;
+   font-size: 22px !important;
+
+}
+.menu-circle {
+   margin-right: auto;
+   width: 23px;
+   height: 23px;
+   border-radius: 50%;
+   background-color: black;
+   /* transition: all .3s; */
+}
+.menu-circle__switched {
+   margin-right: 0;
+   margin-left: auto;
+   background-color: #fff;
+   /* transition: all .3s; */
+}
+.menu-circle__updated {
+   display: none !important;
 }
